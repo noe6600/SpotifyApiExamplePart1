@@ -47,7 +47,7 @@ public class TrackDetailFragment extends Fragment implements LoaderManager.Loade
         if (arguments != null){
             mUri = arguments.getParcelable(TrackDetailFragment.DETAIL_URI);
 
-            String artistSpotifyId = DataContract.TrackEntry.getTrackSpotigyId(mUri);
+            String artistSpotifyId = DataContract.TrackEntry.getTrackSpotifyId(mUri);
             Cursor artistNameCursor = getActivity().getContentResolver().query(DataContract.ArtistEntry.buildArtistNameUri(artistSpotifyId), null, null, null, null);
 
             if ((artistNameCursor != null) && artistNameCursor.moveToFirst()) {

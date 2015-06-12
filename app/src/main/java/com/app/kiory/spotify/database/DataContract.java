@@ -71,7 +71,11 @@ public class DataContract {
             return CONTENT_URI.buildUpon().appendPath(spotifyId).build();
         }
 
-        public static String getTrackSpotigyId(Uri uri) {
+        public static Uri buildTrackDetailUri(String spotifyId) {
+            return CONTENT_URI.buildUpon().appendPath(spotifyId).appendPath("detail").build();
+        }
+
+        public static String getTrackSpotifyId(Uri uri) {
             return uri.getPathSegments().get(1);
         }
     }

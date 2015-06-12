@@ -23,7 +23,7 @@ public class DetailActivity extends ActionBarActivity implements DetailFragment.
         Bundle arguments = new Bundle();
         arguments.putParcelable(DetailFragment.DETAIL_URI, getIntent().getData());
 
-        String artistSpotifyId = DataContract.TrackEntry.getTrackSpotigyId(getIntent().getData());
+        String artistSpotifyId = DataContract.TrackEntry.getTrackSpotifyId(getIntent().getData());
         String artistName = "";
 
         Cursor artistNameCursor = getContentResolver().query(DataContract.ArtistEntry.buildArtistNameUri(artistSpotifyId), null, null, null, null);

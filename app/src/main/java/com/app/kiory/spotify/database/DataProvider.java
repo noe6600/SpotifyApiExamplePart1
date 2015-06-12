@@ -39,7 +39,7 @@ public class DataProvider extends ContentProvider{
             }
 
             case Routes._ARTIST_NAME: {
-                String idPost = DataContract.TrackEntry.getTrackSpotigyId(uri);
+                String idPost = DataContract.TrackEntry.getTrackSpotifyId(uri);
                 String[] mySelectionArgs = {idPost};
 
                 String[] myProyection= {DataContract.TrackEntry.COLUMN_NAME};
@@ -57,13 +57,29 @@ public class DataProvider extends ContentProvider{
             }
 
             case Routes._TRACKS: {
-                String idPost = DataContract.TrackEntry.getTrackSpotigyId(uri);
-                String[] mySelectionArgs = {idPost};
+                String spotifyId = DataContract.TrackEntry.getTrackSpotifyId(uri);
+                String[] mySelectionArgs = {spotifyId};
 
                 retCursor = dbHelper.getReadableDatabase().query(
                         DataContract.TrackEntry.TABLE_NAME,
                         projection,
                         DataContract.TrackEntry.COLUMN_ARTIST_ID + " = ?",
+                        mySelectionArgs,
+                        null,
+                        null,
+                        sortOrder
+                );
+                break;
+            }
+
+            case Routes._TRACK_BY_SPOTIFY_ID: {
+                String spotifyId = DataContract.TrackEntry.getTrackSpotifyId(uri);
+                String[] mySelectionArgs = {spotifyId};
+
+                retCursor = dbHelper.getReadableDatabase().query(
+                        DataContract.TrackEntry.TABLE_NAME,
+                        projection,
+                        DataContract.TrackEntry.COLUMN_SPOTIFY_ID + " = ?",
                         mySelectionArgs,
                         null,
                         null,

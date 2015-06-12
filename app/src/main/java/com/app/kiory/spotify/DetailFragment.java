@@ -45,7 +45,7 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
         Bundle arguments = getArguments();
         if (arguments != null){
             mUri = arguments.getParcelable(DetailFragment.DETAIL_URI);
-            Webservice.searchTopTracks(SharedPreferences.getAccessToken(getActivity()), DataContract.TrackEntry.getTrackSpotigyId(mUri), mContentResolver);
+            Webservice.searchTopTracks(SharedPreferences.getAccessToken(getActivity()), DataContract.TrackEntry.getTrackSpotifyId(mUri), mContentResolver);
         }
 
         trackAdapter = new TrackAdapter(getActivity(), null, 0);
@@ -57,7 +57,7 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
             Cursor cursor = (Cursor) adapterView.getItemAtPosition(position);
             if (cursor != null) {
-                ((Callbacks)getActivity()).onItemSelected(DataContract.TrackEntry.buildTrackUri(cursor.getString(cursor.getColumnIndex(DataContract.TrackEntry.COLUMN_ARTIST_ID))));
+                ((Callbacks)getActivity()).onItemSelected(DataContract.TrackEntry.buildTrackDetailUri(cursor.getString(cursor.getColumnIndex(DataContract.TrackEntry.COLUMN_SPOTIFY_ID))));
             }
             listPosition = position;
             }

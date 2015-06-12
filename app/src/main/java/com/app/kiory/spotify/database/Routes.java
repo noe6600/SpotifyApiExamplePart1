@@ -13,12 +13,14 @@ public class Routes {
     public static final int _ARTIST_NAME = 103;
     public static final int _TRACKS = 101;
     public static final int _TRACKS_ALL = 102;
+    public static final int _TRACK_BY_SPOTIFY_ID = 104;
 
     static{
         sUriMatcher.addURI(DataContract.CONTENT_AUTHORITY, DataContract.PATH_ARTISTS, _ARTISTS);
         sUriMatcher.addURI(DataContract.CONTENT_AUTHORITY, DataContract.PATH_ARTISTS+"/*", _ARTIST_NAME);
         sUriMatcher.addURI(DataContract.CONTENT_AUTHORITY, DataContract.PATH_TRACKS+"/*", _TRACKS);
         sUriMatcher.addURI(DataContract.CONTENT_AUTHORITY, DataContract.PATH_TRACKS, _TRACKS_ALL);
+        sUriMatcher.addURI(DataContract.CONTENT_AUTHORITY, DataContract.PATH_TRACKS+"/*/*", _TRACK_BY_SPOTIFY_ID);
     };
 
     public static int resolveRoute(Uri u){
